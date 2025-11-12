@@ -1,0 +1,482 @@
+/* Estilo Web Base (similar a los otros CSS) */
+body{
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: lightblue;
+}
+
+header{
+  background:rgba(77, 77, 139, 0.72);
+  color:white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  padding-right: 25px;
+  padding-left: 25px;
+  height: 35px;
+  position: relative; /* Para controlar el apilamiento */
+  z-index: 1; /* Para que quede debajo del modal */
+}
+
+/* Botón de cierre para móviles */
+.btn-close-mobile {
+  display: none; /* Oculto por defecto en escritorio */
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 40px;
+  font-weight: bold;
+  color: red;
+  text-decoration: none;
+  background: transparent;
+  border: none;
+  z-index: 1001; /* Para que esté sobre otros elementos del header */
+}
+
+.btn-close-mobile:hover {
+  color: darkred;
+}
+
+a{
+  text-decoration: none;
+  color: white;
+}
+
+nav a {
+  font-weight: 600;
+  padding-right: 10px;
+}
+
+nav a:hover{
+  color:rgb(99, 183, 235);
+}
+
+main{
+  margin: 0;
+  padding: 25px 0 25px 0;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  flex-grow: 1;
+  position: relative; /* Clave para que el modal se posicione dentro de main */
+}
+
+article{
+  background: rgba(180, 180, 180, 0.671);
+  margin:20px;
+  width: 90%;
+  max-width: 600px; /* Más compacto */
+  padding:5px;
+  border-radius: 10px;
+  border: 2px solid rgb(255, 255, 255);
+  position: relative; /* Para controlar el apilamiento */
+  z-index: 1; /* Para que quede debajo del modal */
+}
+
+footer {
+  background-color: hsla(0, 0%, 7%, 0.75);
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  font-family: Arial, sans-serif;
+  position: relative; /* Para controlar el apilamiento */
+  z-index: 1; /* Para que quede debajo del modal */
+}
+
+.autores {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+.autores li {
+  display: inline-block;
+  margin: 10px 20px;
+}
+
+.autores a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.autores a:hover {
+  transform: scale(1.1); 
+  color: #e1306c; 
+}
+
+.autores i {
+  font-size: 18px;
+}
+
+.copy {
+  font-size: 14px;
+  color: #aaa;
+}
+
+/* --- ESTILOS DEL QUIZ --- */
+
+.quiz-container {
+    background: #00000031;
+    border: 4px solid #00ff88;
+    border-radius: 15px;
+    padding: 20px;
+    width: 100%;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+    position: relative; /* Para posicionar el botón de cierre del juego */
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.pregunta-numero {
+    font-weight: bold;
+    flex-grow: 1; /* Ocupa el espacio central */
+    text-align: center; /* Centra el texto */
+}
+
+.cronometro {
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #00ff88;
+    transition: color 0.3s;
+}
+
+.cronometro.urgente {
+    color: #ff4444;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.barra-progreso {
+    width: 100%;
+    height: 8px;
+    background-color: #333;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.barra-progreso-fill {
+    width: 0%;
+    height: 100%;
+    background-color: #00ff88;
+    transition: width 0.5s ease-in-out;
+}
+
+.pregunta-container {
+    background: #1a1a1a30;
+    border: 2px solid #00ff88;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.pregunta-texto {
+    color: white;
+    font-size: 1.1em;
+    text-align: center;
+    margin: 0;
+}
+
+.opciones-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.opcion-btn {
+    padding: 15px;
+    font-size: 1em;
+    font-weight: bold;
+    border: 2px solid #666;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: #333;
+    color: white;
+}
+
+.opcion-btn:hover:not(:disabled) {
+    background: #ffa500;
+    border-color: #ff8800;
+    color: #000;
+    transform: translateY(-2px);
+}
+
+.opcion-btn:disabled {
+    cursor: not-allowed;
+}
+
+.opcion-btn.correcta {
+    background: #00ff88;
+    border-color: #00cc66;
+    color: #000;
+}
+
+.opcion-btn.incorrecta {
+    background: #ff4444;
+    border-color: #cc0000;
+    color: white;
+}
+
+/* --- ESTILOS DE MODALES (COPIADOS DE PASAPALABRAS) --- */
+
+.modal-overlay {
+    position: absolute; /* Cambiado de fixed a absolute */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.396);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+    background: #1e1e1e;
+    color: white;
+    padding: 30px;
+    border-radius: 15px;
+    border: 3px solid #00ff88;
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    position: relative; /* Para posicionar el botón de cierre */
+    box-shadow: 0 10px 40px rgba(0, 255, 136, 0.3);
+}
+
+.modal-content h2 { margin-bottom: 15px; color: #00ff88; }
+.modal-score-display { font-weight: bold; font-size: 1.2em; color: #ffa500; }
+
+/* Selector de dificultad en modal */
+.difficulty-selector { margin: 20px 0; }
+.difficulty-selector label { font-weight: bold; margin-right: 10px; }
+.difficulty-selector select {
+    background-color: #2c3e50;
+    color: white;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 2px solid #3498db;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* Botones de modales */
+.btn-start, .btn-save, .btn-restart, .btn-home {
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    margin-top: 10px;
+}
+.btn-start { background: #00ff88; color: #000; }
+.btn-start:hover { background: #00cc66; transform: translateY(-2px); }
+.btn-save { background: #3b5998; color: white; }
+.btn-save:hover { background: #2d4373; }
+.btn-restart { background: #ff4444; color: white; }
+.btn-home { background: #3b5998; color: white; display: inline-block; }
+
+/* Botón de cierre para el modal */
+.btn-close-modal {
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  font-size: 36px;
+  font-weight: bold;
+  color: red;
+  text-decoration: none;
+  line-height: 1;
+}
+.btn-close-modal:hover {
+  color: darkred;
+}
+
+/* Botón de cierre para el juego en curso */
+.btn-close-quiz {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  width: 30px;
+  height: 30px;
+  background: red;
+  color: white;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: bold;
+  text-decoration: none;
+  line-height: 1;
+  z-index: 2;
+}
+.btn-close-quiz:hover {
+  background: darkred;
+}
+
+/* Estilos de Ranking en Modal */
+#save-score-view input {
+    width: 80%;
+    padding: 12px;
+    font-size: 18px;
+    border: 3px solid #00ff88;
+    border-radius: 8px;
+    background: #222;
+    color: white;
+    outline: none;
+    text-align: center;
+    margin: 20px 0;
+}
+.ranking-list { max-height: 300px; overflow-y: auto; margin-top: 15px; border: 1px solid #444; border-radius: 8px; padding: 10px; text-align: left; }
+.ranking-item { display: flex; justify-content: space-between; align-items: center; padding: 10px; border-bottom: 1px solid #333; }
+.rank-pos { font-weight: bold; min-width: 30px; }
+.rank-name { flex-grow: 1; margin-left: 15px; }
+.rank-score { font-weight: bold; color: #00ff88; }
+.rank-time { font-size: 12px; color: #999; margin-left: 15px; }
+.rank-gold { color: #FFD700; }
+.rank-silver { color: #C0C0C0; }
+.rank-bronze { color: #CD7F32; }
+.modal-buttons { display: flex; justify-content: space-around; align-items: center; margin-top: 25px; }
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* --- ESTILOS ADICIONALES PARA EL MODAL DE RESULTADOS (COMO EN PASAPALABRAS) --- */
+
+.modal-stats {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: 15px 0;
+  background: #2a2a2a;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.modal-stats span {
+  width: 50%;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.btn-show-answers {
+  background: #ffc107;
+  color: black;
+  display: block;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 15px;
+  font-weight: bold;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-show-answers:hover {
+  background: #e0a800;
+}
+
+.failed-answers-list {
+  display: none;
+  position: relative;
+  max-height: 150px;
+  overflow-y: auto;
+  text-align: left;
+  background: #111;
+  padding: 15px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+}
+
+.failed-answers-list::-webkit-scrollbar { width: 8px; }
+.failed-answers-list::-webkit-scrollbar-track { background: #2c2c2c; border-radius: 4px; }
+.failed-answers-list::-webkit-scrollbar-thumb { background: #555; border-radius: 4px; }
+.failed-answers-list::-webkit-scrollbar-thumb:hover { background: #777; }
+
+#failed-answers-content {
+  padding-top: 25px;
+}
+
+.failed-answer-item {
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+.btn-close-answers {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background: #ff4444;
+  border: none;
+  color: white;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  line-height: 1;
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-close-answers:hover {
+  background: #cc0000;
+}
+
+/* --- FIN DE ESTILOS ADICIONALES --- */
+
+
+/* Media Query para móviles */
+@media (max-width: 600px) {
+  .opciones-grid {
+    grid-template-columns: 1fr; /* Una sola columna en móviles */
+  }
+  .modal-buttons { flex-direction: column; gap: 15px; }
+  .modal-buttons .btn-home, .modal-buttons .btn-restart { width: 100%; }
+  /* Mostrar el botón de cierre y ocultar la navegación normal en móviles */
+  .btn-close-mobile {
+    display: block;
+  }
+  header nav {
+    display: none;
+  }
+}
+
+@media (max-width: 380px) {
+  .pregunta-texto { font-size: 1em; }
+  .opcion-btn { padding: 12px; font-size: 0.9em; }
+  .header { font-size: 0.9em; }
+  .modal-content { padding: 20px; }
+}

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz de Fútbol</title>
+    <link rel="stylesheet" href="/quiz/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <div class="fondo"></div>
+
+    <header>
+        <div class="Logo">
+            <h2>Quiz Futbol</h2>
+        </div>
+        <nav>
+            <a href="/index.html">Inicio</a>
+            <a href="/ranking/index.html">Ranking</a>
+        </nav>
+    </header>
+    <main>
+        <article>
+            <div class="quiz-container">
+                <!-- Contenido del quiz (inicialmente oculto) -->
+                <div class="quiz-content" id="quizContent" style="display: none;">
+                    <a href="../index.html" class="btn-close-quiz">&times;</a>
+                    <!-- Encabezado -->
+                    <div class="header">
+                        <div class="pregunta-numero" id="preguntaNumero"></div>
+                        <div class="cronometro" id="cronometro">
+                            <span id="tiempo">3:00</span>
+                        </div>
+                    </div>
+    
+                    <!-- Barra de progreso -->
+                    <div class="barra-progreso">
+                        <div class="barra-progreso-fill" id="barraProgreso"></div>
+                    </div>
+    
+                    <!-- Pregunta -->
+                    <div class="pregunta-container">
+                        <h2 class="pregunta-texto" id="preguntaTexto"></h2>
+                    </div>
+    
+                    <!-- Opciones -->
+                    <div class="opciones-grid" id="opcionesGrid"></div>
+                </div>
+            </div>
+        </article>
+        
+                <!-- Modal de Inicio (Visible al cargar) -->
+                <div id="start-modal-overlay" class="modal-overlay">
+                    <div class="modal-content">
+                        <a href="../index.html" class="btn-close-modal">&times;</a>
+                        <h2>Quiz de Fútbol</h2>
+                        <p>Selecciona la dificultad y prepárate para responder.</p>
+                        <div class="difficulty-selector">
+                            <label for="difficulty-quiz">Dificultad:</label>
+                            <select id="difficulty-quiz">
+                                <option value="facil">Fácil</option>
+                                <option value="dificil" selected>Difícil</option>
+                            </select>
+                        </div>
+                        <button id="btnComenzar" class="btn-start">Comenzar</button>
+                    </div>
+                </div>
+        
+                <!-- Modal de Fin de Juego (Oculto por defecto) -->
+                <div id="end-modal-overlay" class="modal-overlay" style="display: none;">
+                    <div id="game-over-modal" class="modal-content">
+                        <div id="save-score-view">
+                            <h2>¡Juego Terminado!</h2>
+                            <p>Tu puntuación final es: <span id="modal-final-score" class="modal-score-display">0</span></p>
+                            
+                            <div id="modal-stats" class="modal-stats">
+                                <span>Acertadas: <span id="correct-count-stat">0</span></span>
+                                <span>Falladas: <span id="fail-count-stat">0</span></span>
+                            </div>
+                            <button id="btnShowAnswers" class="btn-show-answers">Ver Respuestas Falladas</button>
+                            <div id="failed-answers-list" class="failed-answers-list">
+                              <button id="btnCloseAnswers" class="btn-close-answers">&times;</button>
+                              <div id="failed-answers-content"></div>
+                            </div>
+
+                            <input type="text" id="usernameInput" placeholder="Ingresa tu nombre para el ranking">
+                            <button class="btn-save" id="btnSaveScore">Guardar y Ver Ranking</button>
+                        </div>
+                        <div id="ranking-view" style="display: none;">
+                            <h2><i class="fas fa-trophy"></i> Ranking de Puntuaciones</h2>
+                            <div id="ranking-list" class="ranking-list"></div>
+                            <div class="modal-buttons">
+                                <button id="btnPlayAgain" class="btn-restart">Volver a Jugar</button>
+                                <a href="../index.html" class="btn-home">Volver al Inicio</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </main>
+
+    <footer>
+        <p>Trabajo realizado por:</p>
+      
+        <ul class="autores">
+          <li>
+            <a href="https://www.instagram.com/benjaaa__mnz/" target="_blank">
+              <i class="fab fa-instagram"></i> Benjamín Muñoz
+            </a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/renzoo_sgv/" target="_blank">
+              <i class="fab fa-instagram"></i> Renzo Segovia
+            </a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/adrianoruee.12/" target="_blank">
+              <i class="fab fa-instagram"></i> Adrian Orue
+            </a>
+          </li>
+          <a href="https://www.instagram.com/tomas.montiell/" target="_blank">
+                  <i class="fab fa-instagram"></i> Tomas Montiel
+                </a>
+            </li><a href="https://www.instagram.com/caroa.ramirez/" target="_blank">
+                  <i class="fab fa-instagram"></i> Carolina Ramirez
+                </a>
+            </li>
+        </ul>
+            
+        <p class="copy">© 2025 Todos los derechos reservados</p>
+      </footer>      
+    <script type="module" src="/quiz/quiz.js"></script>
+</body>
+</html>
