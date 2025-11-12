@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Futbol</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="Logo">
+            <h2>Quiz Futbol</h2>
+        </div>
+        <nav>
+            <a href="../index.html">Inicio</a>
+            <a href="/ranking/index.html">Ranking</a>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <article class="ranking-container">
+                <h2><i class="fas fa-trophy"></i> Ranking de Puntuaciones</h2>
+                <div class="game-selector">
+                    <button id="btn-rank-pasapalabras" class="rank-btn active">Pasapalabras</button>
+                    <button id="btn-rank-quiz" class="rank-btn">Quiz</button>
+                </div>
+                <div id="ranking-list" class="ranking-list">
+                    <!-- El ranking se cargará aquí dinámicamente -->
+                    <p>Selecciona un juego para ver el ranking.</p>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer>
+        <p>Trabajo realizado por:</p>
+      
+        <ul class="autores">
+          <li>
+            <a href="https://www.instagram.com/benjaaa__mnz/" target="_blank">
+              <i class="fab fa-instagram"></i> Benjamín Muñoz
+            </a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/renzoo_sgv/" target="_blank">
+              <i class="fab fa-instagram"></i> Renzo Segovia
+            </a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/adrianoruee.12/" target="_blank">
+              <i class="fab fa-instagram"></i> Adrian Orue
+            </a>
+          </li>
+        </ul>
+      
+        <p class="copy">© 2025 Todos los derechos reservados</p>
+      </footer>      
+
+    <script type="module" src="ranking.js"></script>
+</body>
+</html>

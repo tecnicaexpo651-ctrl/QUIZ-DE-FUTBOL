@@ -1,0 +1,733 @@
+/* Estilo Web */
+body{
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: lightblue;
+}
+
+header{
+  background:rgba(77, 77, 139, 0.72);
+  color:white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  padding-right: 25px;
+  padding-left: 25px;
+  height: 55px;
+}
+
+/* Botón de cierre para móviles */
+.btn-close-mobile {
+  display: none; /* Oculto por defecto en escritorio */
+  position: absolute; /* Se posicionará relativo al .title-container */
+  top: 50%;
+  left: 0;
+  font-size: 36px;
+  font-weight: bold;
+  color: red;
+  text-decoration: none;
+  background: transparent;
+  border: none;
+  z-index: 1001; /* Para que esté sobre otros elementos del header */
+  transform: translateY(-50%);
+}
+
+.btn-close-mobile:hover {
+  color: darkred;
+}
+
+
+a{
+  text-decoration: none;
+  color: white;
+}
+
+nav a {
+  font-weight: 600;
+  padding-right: 10px;
+}
+
+nav a:hover{
+  color:rgb(99, 183, 235);
+}
+
+main{
+  margin: 0;
+  padding: 25px 0 25px 0;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; -> Eliminado para que el footer se pegue abajo */
+  flex-grow: 1; /* Hace que el main ocupe el espacio disponible, empujando el footer hacia abajo */
+}
+
+section{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%; /* Ocupa todo el ancho disponible */
+}
+
+article{
+  background: rgba(180, 180, 180, 0.671);
+  margin:20px;
+  width: 700px;
+  padding:5px;
+  border-radius: 10px;
+  border: 2px solid rgb(255, 255, 255);
+  max-width: 95%; /* Asegura que no se desborde en móviles */
+}
+
+footer {
+  background-color: hsla(0, 0%, 7%, 0.75);
+  color: #fff;
+  text-align: center;
+  padding: 15px;
+  font-family: Arial, sans-serif;
+}
+
+.autores {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+.autores li {
+  display: inline-block;
+  margin: 10px 20px;
+}
+
+.autores a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.autores a:hover {
+  transform: scale(1.1); 
+  color: #e1306c; 
+}
+
+.autores i {
+  font-size: 18px;
+}
+
+.copy {
+  font-size: 14px;
+  color: #aaa;
+}
+
+/* Estilos Pasapalabras*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+        /* Contenedor principal del juego */
+        .game-container {
+          background: #00000031;
+          border: 6px solid #00ff88;
+          border-radius: 20px;
+          padding: 20px;
+          padding-top:12px;
+          max-width: 800px;
+          width: 100%;
+          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      }
+
+      .title-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative; /* Clave para posicionar el botón X correctamente */
+      }
+
+      .timer {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #00ff88; /* Color inicial */
+        font-size: 52px;
+        font-weight: bold;
+        z-index: 5; /* Para que esté sobre el fondo pero debajo de la letra activa */
+        transition: color 0.5s ease;
+        text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+      }
+
+      /* Nuevas clases para el color del temporizador */
+      .timer.warning {
+        color: #ffa500; /* Amarillo/Naranja */
+      }
+
+      .timer.danger {
+        color: #ff4444; /* Rojo */
+      }
+
+      /* Título principal */
+      h1 {
+          color: white;
+          font-size: 26px;
+          font-weight: bold;
+          letter-spacing: 8px;
+          flex-grow: 1;
+          text-align: center;
+          margin-left: 10px;
+      }
+
+      /* Contenedor del rosco de letras */
+      .letter-circle {
+          position: relative;
+          width: 400px;
+          height: 400px;
+          margin: 0 auto 5px;
+          margin: 0 auto 5px; /* Mantenemos el centrado horizontal del contenedor */
+          display: flex; /* Añadido para centrar el contenido interno */
+          justify-content: center; /* Centra el rosco horizontalmente */
+      }
+
+      /* Cada letra individual del rosco */
+      .letter {
+          position: absolute;
+          width: 38px;
+          height: 38px;
+          background: #333;
+          color: white;
+          border: 2px solid #666;
+          border-radius: 6px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 20px;
+          font-weight: bold;
+          transform: translate(-50%, -50%); /* Centrar la letra desde su centro */
+          cursor: pointer;
+          transition: all 0.3s ease;
+          z-index: 1;
+      }
+
+      /* Letra activa (la que se está jugando) */
+      .letter.active {
+          background: #00aeff;
+          border-color: #006eff;
+          transform: translate(-50%, -50%) scale(1.4);
+          box-shadow: 0 0 25px rgba(0, 153, 255, 0.8);
+          z-index: 10;
+      }
+
+      /* Letra pasada (Pasapalabra) */
+      .letter.passed {
+          background: #eead07; /* Amarillo oscuro */
+          border-color: #b38000;
+          color: white;
+      }
+
+      /* Letra pendiente en la segunda vuelta */
+      .letter.second-round {
+          background: #2c2c2c; /* Gris muy oscuro / Negro */
+          border-color: #111;
+          color: white;
+      }
+
+      /* Letra pasada y no respondida al final */
+      .letter.failed-pass {
+          background: #1a1a1a;
+          border-color: #000;
+      }
+
+      /* Letra correcta */
+      .letter.correct {
+          background: #00ff88;
+          border-color: #00cc66;
+          color: #000;
+      }
+
+      /* Letra incorrecta */
+      .letter.incorrect {
+          background: #ff4444;
+          border-color: #cc0000;
+      }
+
+      /* Sección de información */
+      .info-section {
+          background: #1a1a1a30;
+          border: 3px solid #00ff88;
+          border-radius: 12px;
+          padding: 10px;
+          margin-bottom: 5px;
+      }
+
+      .question {
+          color: white;
+          font-size: 20px;
+          font-weight: bold;
+          text-align: center;
+          margin-bottom: 2px;
+          min-height: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      }
+
+      /* Contenedor para Aciertos y Puntos */
+      .info-stats {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 8px;
+        padding: 0 5px;
+      }
+
+      /* Contador de aciertos */
+      .score {
+          color: white;
+          font-size: 20px;
+      }
+
+      /* Puntuación */
+      .points {
+          color: #00ff88;
+          font-size: 20px;
+          font-weight: bold;
+      }
+
+      /* Dificultad en el juego */
+      .difficulty-display {
+        color: #ffa500; /* Naranja, para que destaque */
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      /* Campo de entrada de respuesta */
+      .input-container {
+          display: flex;
+          gap: 15px;
+          margin-bottom: 15px;
+      }
+
+      input {
+          flex: 1;
+          padding: 12px;
+          font-size: 18px;
+          border: 3px solid #00ff88;
+          border-radius: 8px;
+          background: #222222b7;
+          color: white;
+          outline: none;
+      }
+
+      input:focus {
+          border-color: #ffa500;
+          box-shadow: 0 0 15px rgba(255, 165, 0, 0.5);
+      }
+
+      /* Botones */
+      .buttons {
+          display: flex;
+          gap: 15px;
+          flex-wrap: wrap;
+      }
+
+      button {
+          flex: 1;
+          min-width: 130px;
+          padding: 12px 20px;
+          font-size: 16px;
+          font-weight: bold;
+          border: none;
+          border-radius: 8px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          text-transform: uppercase;
+      }
+
+      button:disabled {
+        cursor: not-allowed;
+        opacity: 0.6; /* Opcional: reduce la opacidad para que se vea "apagado" */
+      }
+
+      .btn-answer {
+          background: #00ff88;
+          color: #000;
+      }
+
+      .btn-answer:hover {
+          background: #00cc66;
+          transform: translateY(-2px);
+          box-shadow: 0 5px 15px rgba(0, 255, 136, 0.4);
+      }
+
+      .btn-pass {
+          background: #ffa500;
+          color: #000;
+      }
+
+      .btn-pass:hover {
+          background: #ff8800;
+          transform: translateY(-2px);
+          box-shadow: 0 5px 15px rgba(255, 165, 0, 0.4);
+      }
+
+      .btn-restart {
+          background: #44b4ff;
+          color: white;
+      }
+
+      .btn-restart:hover {
+          background: #0025cc;
+          transform: translateY(-2px);
+          box-shadow: 0 5px 15px rgba(255, 68, 68, 0.4);
+      }
+
+      /* Mensaje final */
+      .final-message {
+          color: white;
+          font-size: 22px;
+          text-align: center;
+          margin-top: 15px;
+          font-weight: bold;
+          display: none;
+      }
+
+      .final-message.show {
+          display: block;
+          animation: fadeIn 0.5s ease;
+      }
+
+      @keyframes fadeIn {
+          from { opacity: 0; transform: scale(0.9); }
+          to { opacity: 1; transform: scale(1); }
+      }
+
+      /* Contenedor para guardar puntuación */
+      .save-score-container {
+        display: none; /* Oculto por defecto */
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 20px;
+        animation: fadeIn 0.5s ease;
+      }
+
+      .save-score-container input {
+        text-align: center;
+      }
+
+      .btn-save {
+        background: #3b5998;
+        color: white;
+      }
+
+      .btn-save:hover {
+        background: #2d4373;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(59, 89, 152, 0.4);
+      }
+
+      .btn-save:disabled {
+        background: #8b9dc3;
+        cursor: not-allowed;
+      }
+
+      /* --- ESTILOS DE LA VENTANA MODAL DE FIN DE JUEGO --- */
+
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        display: none; /* Oculto por defecto */
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        animation: fadeIn 0.3s ease;
+      }
+
+      .modal-content {
+        background: #1e1e1e;
+        color: white;
+        padding: 30px;
+        border-radius: 15px;
+        border: 3px solid #00ff88;
+        width: 90%;
+        max-width: 500px;
+        text-align: center;
+        box-shadow: 0 10px 40px rgba(0, 255, 136, 0.3);
+      }
+
+      .modal-content h2 {
+        margin-bottom: 15px;
+        color: #00ff88;
+      }
+
+      .modal-score-display {
+        font-weight: bold;
+        font-size: 1.2em;
+        color: #ffa500;
+      }
+
+      #save-score-view input {
+        text-align: center;
+        margin: 20px 0;
+      }
+
+      /* Estilos de la lista de Ranking */
+      .ranking-list {
+        max-height: 350px;
+        overflow-y: auto;
+        margin-top: 15px;
+        border: 1px solid #444;
+        border-radius: 8px;
+        padding: 10px;
+      }
+
+      .ranking-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        border-bottom: 1px solid #333;
+        font-size: 16px;
+      }
+
+      .ranking-item:last-child {
+        border-bottom: none;
+      }
+
+      .rank-pos {
+        font-weight: bold;
+        min-width: 30px;
+      }
+
+      .rank-name {
+        flex-grow: 1;
+        text-align: left;
+        margin-left: 15px;
+      }
+
+      .rank-score {
+        font-weight: bold;
+        color: #00ff88;
+      }
+
+      .rank-time {
+        font-size: 12px;
+        color: #999;
+        margin-left: 15px;
+        min-width: 80px;
+        text-align: right;
+      }
+
+      /* Colores para el Top 3 */
+      .rank-gold { color: #FFD700; }
+      .rank-silver { color: #C0C0C0; }
+      .rank-bronze { color: #CD7F32; }
+
+      .ranking-item.rank-gold .rank-pos,
+      .ranking-item.rank-gold .rank-name {
+        font-weight: bold;
+        color: #FFD700;
+      }
+      .ranking-item.rank-silver .rank-pos,
+      .ranking-item.rank-silver .rank-name {
+        color: #C0C0C0;
+      }
+      .ranking-item.rank-bronze .rank-pos,
+      .ranking-item.rank-bronze .rank-name {
+        color: #CD7F32;
+      }
+
+      /* Nuevos estilos para el modal */
+      #modal-subtitle {
+        color: #00ff88;
+        font-weight: bold;
+        font-size: 1.1em;
+      }
+
+      .modal-stats {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap; /* Permite que los elementos pasen a la siguiente línea si no caben */
+        margin: 15px 0;
+        background: #2a2a2a;
+        padding: 10px;
+        border-radius: 8px;
+      }
+
+      .modal-stats span {
+        width: 50%; /* Ocupa la mitad del contenedor */
+        margin-bottom: 10px; /* Espacio entre filas */
+        box-sizing: border-box; /* Para que el padding no afecte el ancho */
+      }
+
+      .btn-show-answers {
+        background: #ffc107;
+        color: black;
+        display: block; /* Para poder centrarlo con margin */
+        border: none;
+        padding: 8px 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        margin-bottom: 15px;
+        font-weight: bold;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .btn-show-answers:hover {
+        background: #e0a800;
+      }
+
+      .failed-answers-list {
+        display: none; /* Oculto por defecto */
+        position: relative; /* Para posicionar el botón de cierre */
+        max-height: 150px;
+        overflow-y: auto;
+        text-align: left;
+        background: #111;
+        padding: 15px;
+        border-radius: 6px;
+        margin-bottom: 15px;
+      }
+
+      /* Estilo moderno para la barra de scroll */
+      .failed-answers-list::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      .failed-answers-list::-webkit-scrollbar-track {
+        background: #2c2c2c;
+        border-radius: 4px;
+      }
+
+      .failed-answers-list::-webkit-scrollbar-thumb {
+        background: #555;
+        border-radius: 4px;
+      }
+
+      .failed-answers-list::-webkit-scrollbar-thumb:hover {
+        background: #777;
+      }
+
+      #failed-answers-content {
+        padding-top: 25px; /* Espacio para que no se solape con el botón de cierre */
+      }
+
+      .failed-answer-item {
+        margin-bottom: 8px;
+      }
+
+      .btn-close-answers {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        background: #ff4444;
+        border: none;
+        color: white;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+        line-height: 1;
+        width: 30px;
+        height: 30px;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .btn-close-answers:hover {
+        background: #cc0000;
+      }
+
+      /* Botones del Modal */
+      .modal-buttons {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-top: 25px;
+      }
+
+      .modal-buttons .btn-restart {
+        flex: 0.9;
+        padding: 10px 15px;
+      }
+
+      .btn-home {
+        display: inline-block;
+        background: #3b5998;
+        color: white;
+        padding: 12px 20px;
+        border-radius: 8px;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 16px;
+        transition: all 0.3s ease;
+        flex-grow: 1; /* Para que ocupe el espacio en el modal */
+      }
+      /* Responsivo para móviles */
+      @media (max-width: 768px) {
+          .game-container {
+              padding: 15px;
+              border-width: 4px;
+          }
+
+          h1 {
+              font-size: 20px;
+              letter-spacing: 4px;
+          }
+
+          .letter-circle {
+              width: 90vw; /* Ocupa el 90% del ancho de la pantalla */
+              height: 90vw; /* Mantiene la proporción cuadrada */
+              max-width: 380px; /* Límite para tablets */
+              max-height: 380px;
+          }
+
+          .letter {
+              width: 10vw;
+              height: 10vw;
+              max-width: 36px;
+              max-height: 36px;
+              font-size: 18px;
+              border-width: 1px;
+          }
+
+          .timer {
+            font-size: 40px;
+          }
+
+          .question {
+              font-size: 18px;
+          }
+
+          .info-stats {
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+          }
+
+          /* Mostrar el botón de cierre y ocultar la navegación normal en móviles */
+          .btn-close-mobile {
+            display: block; /* Se muestra en móviles */
+          }
+          header nav {
+            display: none; /* Se oculta la navegación de escritorio */
+          }
+      }
+
+      @media (max-width: 380px) {
+        .buttons {
+          flex-direction: column;
+        }
+      }

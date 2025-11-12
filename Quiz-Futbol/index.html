@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Futbol</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="Logo">
+            <h2>Quiz Futbol</h2>
+        </div>
+        <nav>
+            <a href="/index.html">Inicio</a>
+            <a href="/ranking/index.html">Ranking</a>
+        </nav>
+    </header>
+    <main>
+        <section>
+            
+            <article class="bienvenida">
+                <h2>Bienvenidos a Quiz Futbol</h2>
+                <p>Pon a prueba tu conocimiento en Futbol con este divertido juego de preguntas y respuestas!</p>
+            </article>
+
+            <article class="juego-1">
+                <h2>Pasapalabras</h2>
+                <p><strong>Como jugar:</strong></p>
+                <ul>
+                        <li>La ruleta girara y una letra se seleccionara al azar.</li>
+                        <li>Dependiendo la pregunta tendras que escribir tu respuesta y darle al boton de validar.</li>
+                        <li>Si la respuesta es Correcta ganas puntos. Si la respuesta es Incorrecta pierdes puntos.</li>
+                </ul>
+                <h3>¿Listo?</h3>
+                <div class="play-controls">
+                    <div class="difficulty-selector">
+                        <label for="difficulty">Dificultad:</label>
+                        <select id="difficulty-pasapalabras">
+                            <option value="easy">Fácil</option>
+                            <option value="hard" selected>Difícil</option>
+                        </select>
+                    </div>
+                    <a href="./game/index.html?difficulty=hard" id="play-pasapalabras-link" class="btn-play">Jugar</a>
+                </div>
+            </article>
+
+            <article class="juego-2">
+                <h2>Quiz</h2>
+                <p><strong>Como jugar:</strong></p>
+                <ul>
+                    <li>Tendras que responder en total 15 preguntas al azar.</li>
+                    <li>Una pregunta, cuatro respuestas y una sola respuesta Correcta.</li>
+                    <li>Si aciertas ganas puntos. Si fallas pierdes puntos.</li>
+                </ul>
+                <h3>¿Listo?</h3>
+                <a href="./quiz/index.html" class="btn-play">Jugar</a>
+            </article>
+        </section>
+    </main>
+    <footer>
+        <p>Trabajo realizado por:</p>
+      
+        <ul class="autores">
+          <li>
+            <a href="https://www.instagram.com/benjaaa__mnz/" target="_blank">
+              <i class="fab fa-instagram"></i> Benjamín Muñoz
+            </a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/renzoo_sgv/" target="_blank">
+              <i class="fab fa-instagram"></i> Renzo Segovia
+            </a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/adrianoruee.12/" target="_blank">
+              <i class="fab fa-instagram"></i> Adrian Orue
+            </a>
+          </li>
+        </ul>
+        <a href="https://www.instagram.com/tomas.montiell/" target="_blank">
+              <i class="fab fa-instagram"></i> Tomas Montiel
+            </a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/caroa.ramirez/" target="_blank">
+              <i class="fab fa-instagram"></i> Carolina Ramirez
+            </a>
+          </li>
+          <li>
+      
+        <p class="copy">© 2025 Todos los derechos reservados</p>
+      </footer>      
+
+    <script>
+        // Script para el selector de dificultad del Pasapalabras
+        const difficultySelector = document.getElementById('difficulty-pasapalabras');
+        const playLink = document.getElementById('play-pasapalabras-link');
+
+        difficultySelector.addEventListener('change', (event) => {
+            const selectedDifficulty = event.target.value;
+            // Actualiza el enlace del botón "Jugar" para pasar la dificultad como parámetro
+            playLink.href = `./game/index.html?difficulty=${selectedDifficulty}`;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pasapalabra Fútbol - Canvas</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+  <header>
+
+    <div class="Logo">
+        <h2>Quiz Futbol</h2>
+    </div>
+
+    <nav>
+        <a href="../index.html">Inicio</a>
+        <a href="/ranking/index.html">Ranking</a>
+    </nav>
+
+  </header>
+
+  <main>
+    <section>
+      <article>
+        <div class="game-container">
+          <div class="title-container">
+            <a href="../index.html" class="btn-close-mobile">&times;</a>
+            <h1>LETRA</h1>
+          </div>
+          
+          <!-- Rosco de letras -->
+          <div class="letter-circle" id="letterCircle">
+            <div id="timer" class="timer">03:00</div>
+          </div>
+  
+          <!-- Información del juego -->
+          <div class="info-section">
+              <div class="info-stats">
+                <div class="score">Aciertos: <span id="correct-count">0</span> / <span id="total-questions">27</span></div>
+                <div id="difficulty-display" class="difficulty-display">Dificultad: <span id="game-difficulty"></span></div>
+                <div class="points">Puntos: <span id="score">0</span></div>
+              </div>
+              <div class="question" id="question">Presiona "Comenzar" para empezar</div>
+          </div>
+  
+          <!-- Entrada y botones -->
+          <div class="input-container">
+              <input type="text" id="answerInput" placeholder="Tu respuesta..." disabled>
+          </div>
+  
+          <div class="buttons">
+              <button class="btn-answer" id="btnAnswer" disabled>Responder</button>
+              <button class="btn-pass" id="btnPass" disabled>Pasapalabra</button>
+              <button class="btn-restart" id="btnStart">Comenzar</button>
+          </div>
+  
+          <div class="final-message" id="finalMessage"></div>
+
+      </div>
+      </article>
+    </section>
+  </main>
+
+  <!-- Ventana Modal de Fin de Juego (Oculta por defecto) -->
+  <div id="modal-overlay" class="modal-overlay">
+      <div id="game-over-modal" class="modal-content">
+          <!-- Paso 1: Guardar Puntuación -->
+          <div id="save-score-view"> 
+              <h2 id="modal-title">¡Juego Terminado!</h2>
+              <p id="modal-subtitle"></p>
+              <p id="modal-percentage" class="modal-percentage"></p>
+              <p>Tu puntuación final es: <span id="modal-final-score" class="modal-score-display">0</span></p>
+              
+              <div id="modal-stats" class="modal-stats">
+                  <span>Acertadas: <span id="correct-count-stat">0</span></span>
+                  <span>Pasapalabras: <span id="pass-count-stat">0</span></span>
+                  <span>Sin Responder: <span id="unanswered-count-stat">0</span></span>
+                  <span>Fallos: <span id="fail-count-stat">0</span></span>
+              </div>
+              <button id="btnShowAnswers" class="btn-show-answers">Ver Respuestas Falladas</button>
+              <div id="failed-answers-list" class="failed-answers-list">
+                <button id="btnCloseAnswers" class="btn-close-answers">&times;</button>
+                <div id="failed-answers-content"></div>
+              </div>
+
+              <input type="text" id="usernameInput" placeholder="Ingresa tu nombre para el ranking">
+              <button class="btn-save" id="btnSaveScore">Guardar y Ver Ranking</button>
+          </div>
+          <!-- Paso 2: Mostrar Ranking -->
+          <div id="ranking-view" style="display: none;">
+              <h2><i class="fas fa-trophy"></i> Ranking de Puntuaciones</h2>
+              <div id="ranking-list" class="ranking-list"></div>
+              <div class="modal-buttons">
+                  <button id="btnPlayAgain" class="btn-restart">Volver a Jugar</button>
+                  <a href="../index.html" class="btn-home">Volver al Inicio</a>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <footer>
+
+    <p>Trabajo realizado por:</p>
+  
+    <ul class="autores">
+      <li>
+        <a href="https://www.instagram.com/benjaaa__mnz/" target="_blank">
+          <i class="fab fa-instagram"></i> Benjamín Muñoz
+        </a>
+      </li>
+      <li>
+        <a href="https://www.instagram.com/renzoo_sgv/" target="_blank">
+          <i class="fab fa-instagram"></i> Renzo Segovia
+        </a>
+      </li>
+      <li>
+        <a href="https://www.instagram.com/adrianoruee.12/" target="_blank">
+          <i class="fab fa-instagram"></i> Adrian Orue
+        </a>
+      </li>
+    </ul>
+  
+    <p class="copy">© 2025 Todos los derechos reservados</p>
+  </footer>      
+
+  <script type="module" src="game.js"></script>
+</body>
+</html>
